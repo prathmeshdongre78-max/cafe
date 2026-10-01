@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Speedway Bike Showroom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ---------- Top navigation ---------- -->
+  <header class="navbar">
+    <div class="brand">🏍 Speedway <span>Bike Showroom</span></div>
+    <nav>
+      <a href="#bikes">Bikes</a>
+      <a href="#emi">EMI Calculator</a>
+      <a href="#enquiry">Test Ride</a>
+    </nav>
+  </header>
+
+  <!-- ---------- Hero banner ---------- -->
+  <section class="hero">
+    <h1>Find Your Perfect Ride</h1>
+    <p>Browse our latest bikes, compare prices, and book a free test ride today.</p>
+    <a href="#bikes" class="btn primary">Explore Bikes</a>
+  </section>
+
+  <!-- ---------- Filters + bike catalog ---------- -->
+  <section id="bikes" class="section">
+    <h2>Our Bikes</h2>
+
+    <div class="filters">
+      <label>Brand
+        <select id="brandFilter">
+          <option value="all">All brands</option>
+        </select>
+      </label>
+
+      <label>Type
+        <select id="typeFilter">
+          <option value="all">All types</option>
+        </select>
+      </label>
+
+      <label>Max price (₹)
+        <input type="range" id="priceFilter" min="60000" max="300000" step="5000" value="300000">
+        <span id="priceValue">₹3,00,000</span>
+      </label>
+    </div>
+
+    <p id="resultCount" class="result-count"></p>
+
+    <div id="bikeGrid" class="bike-grid"></div>
+  </section>
+
+  <!-- ---------- EMI calculator ---------- -->
+  <section id="emi" class="section alt">
+    <h2>EMI Calculator</h2>
+    <p class="muted">Selected bike: <strong id="emiBikeName">Pick a bike above, or enter price manually</strong></p>
+
+    <div class="emi-box">
+      <label>On-road price (₹)
+        <input type="number" id="emiPrice" value="120000" min="10000" step="1000">
+      </label>
+
+      <label>Down payment (₹)
+        <input type="number" id="downPayment" value="20000" min="0" step="1000">
+      </label>
+
+      <label>Loan tenure (months)
+        <input type="number" id="tenure" value="24" min="3" max="60" step="1">
+      </label>
+
+      <label>Interest rate (% per year)
+        <input type="number" id="interestRate" value="9.5" min="0" step="0.1">
+      </label>
+
+      <button id="calcEmiBtn" class="btn primary">Calculate EMI</button>
+    </div>
+
+    <div id="emiResult" class="emi-result hidden">
+      <p>Loan amount: ₹<span id="loanAmount">0</span></p>
+      <p>Monthly EMI: <strong>₹<span id="monthlyEmi">0</span></strong></p>
+      <p>Total interest payable: ₹<span id="totalInterest">0</span></p>
+    </div>
+  </section>
+
+  <!-- ---------- Test ride / enquiry form ---------- -->
+  <section id="enquiry" class="section">
+    <h2>Book a Free Test Ride</h2>
+
+    <form id="enquiryForm" class="enquiry-form">
+      <label>Full name
+        <input type="text" id="custName" required placeholder="Your name">
+      </label>
+
+      <label>Phone number
+        <input type="tel" id="custPhone" required placeholder="10-digit mobile number" pattern="[0-9]{10}">
+      </label>
+
+      <label>Bike interested in
+        <select id="custBike"></select>
+      </label>
+
+      <label>Preferred date
+        <input type="date" id="custDate" required>
+      </label>
+
+      <button type="submit" class="btn primary">Request Test Ride</button>
+      <p id="formMessage" class="form-message hidden">✅ Thank you! We'll call you shortly to confirm.</p>
+    </form>
+  </section>
+
+  <!-- ---------- Bike detail modal ---------- -->
+  <div id="bikeModal" class="modal hidden">
+    <div class="modal-content">
+      <button id="closeModal" class="close-btn">✕</button>
+      <div class="modal-emoji" id="modalEmoji">🏍</div>
+      <h2 id="modalName">Bike Name</h2>
+      <p id="modalBrandType" class="muted"></p>
+      <p id="modalPrice" class="price"></p>
+      <ul id="modalSpecs" class="specs"></ul>
+      <button id="modalEmiBtn" class="btn primary">Check EMI for this bike</button>
+    </div>
+  </div>
+
+  <footer>Mini Project | Web Technology</footer>
+
+  <script src="bikes.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

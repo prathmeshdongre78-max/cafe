@@ -1,0 +1,212 @@
+/* ---------- 1. Base setup ---------- */
+:root {
+  --ink: #15181f;
+  --muted: #5e6472;
+  --bg: #fafafa;
+  --card: #ffffff;
+  --line: #e6e6ea;
+  --accent: #e4572e;   /* showroom orange */
+  --accent-dark: #c9450f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+h1, h2 { font-weight: 800; }
+
+/* ---------- 2. Navbar ---------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 6%;
+  background: var(--ink);
+  color: #fff;
+}
+.brand { font-weight: 700; font-size: 1.1rem; }
+.brand span { font-weight: 400; opacity: 0.7; font-size: 0.9rem; }
+.navbar nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+.navbar nav a:hover { opacity: 1; text-decoration: underline; }
+
+/* ---------- 3. Hero ---------- */
+.hero {
+  text-align: center;
+  padding: 70px 6%;
+  background: linear-gradient(135deg, #1f2430, #15181f);
+  color: #fff;
+}
+.hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+.hero p { color: #c7cbd4; margin-bottom: 20px; }
+
+/* ---------- 4. Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 11px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn.primary { background: var(--accent); color: #fff; border: none; }
+.btn.primary:hover { background: var(--accent-dark); }
+
+/* ---------- 5. Generic section ---------- */
+.section { padding: 50px 6%; }
+.section.alt { background: #f1eee9; }
+.section h2 { margin-bottom: 18px; }
+.muted { color: var(--muted); }
+
+/* ---------- 6. Filters ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+.filters label {
+  flex: 1 1 180px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.filters select, .filters input[type="range"] {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font: inherit;
+}
+.result-count { color: var(--muted); font-size: 0.85rem; margin-bottom: 16px; }
+
+/* ---------- 7. Bike grid ---------- */
+.bike-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 18px;
+}
+.bike-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.bike-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.08); }
+.bike-card .emoji { font-size: 2.4rem; }
+.bike-card h3 { margin: 10px 0 2px; font-size: 1.05rem; }
+.bike-card .tag { font-size: 0.75rem; color: var(--muted); }
+.bike-card .price { margin-top: 10px; font-weight: 700; color: var(--accent-dark); }
+
+/* ---------- 8. EMI calculator ---------- */
+.emi-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+}
+.emi-box label { font-size: 0.85rem; font-weight: 600; display: flex; flex-direction: column; gap: 6px; }
+.emi-box input {
+  padding: 9px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font: inherit;
+}
+.emi-box .btn { grid-column: 1 / -1; }
+
+.emi-result {
+  margin-top: 16px;
+  background: #fff7f2;
+  border: 1px solid #f3c9b4;
+  border-radius: 12px;
+  padding: 16px;
+}
+.emi-result p { margin: 4px 0; }
+.emi-result strong { color: var(--accent-dark); font-size: 1.1rem; }
+
+/* ---------- 9. Enquiry form ---------- */
+.enquiry-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 700px;
+}
+.enquiry-form label { font-size: 0.85rem; font-weight: 600; display: flex; flex-direction: column; gap: 6px; }
+.enquiry-form input, .enquiry-form select {
+  padding: 9px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font: inherit;
+}
+.enquiry-form .btn { grid-column: 1 / -1; }
+.form-message { grid-column: 1 / -1; color: #16794e; font-weight: 600; }
+
+/* ---------- 10. Modal ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+.close-btn {
+  position: absolute;
+  top: 12px; right: 14px;
+  border: none;
+  background: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.modal-emoji { font-size: 3rem; }
+.modal-content .price { font-size: 1.2rem; font-weight: 700; color: var(--accent-dark); margin: 8px 0; }
+.specs { list-style: none; text-align: left; margin: 14px 0; font-size: 0.9rem; }
+.specs li { padding: 4px 0; border-bottom: 1px dashed var(--line); }
+
+.hidden { display: none; }
+
+/* ---------- 11. Footer ---------- */
+footer { text-align: center; padding: 20px; color: var(--muted); font-size: 0.85rem; }
+
+/* ---------- 12. Small screens ---------- */
+@media (max-width: 480px) {
+  .navbar { flex-direction: column; gap: 8px; }
+  .hero h1 { font-size: 1.6rem; }
+}
